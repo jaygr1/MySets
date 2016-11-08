@@ -3,7 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput } from 'react-native';
+  ScrollView,
+  TextInput,
+  TouchableHighlight } from 'react-native';
 
 import Exercise from './Exercise'
 import Set from './Set'
@@ -14,19 +16,21 @@ var styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
-    flex: 1,
-    maxHeight: 100,
-    backgroundColor: '#DAF7A6'
+    backgroundColor: '#DAF7A6',
   }
 });
 
 export default class ExerciseContainer extends Component {
+  clickAddSet() {
+    console.log("You tapped the Add Set Button!");
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Exercise />
         <Set />
-        <AddSet />
+        <AddSet onPress={() => this.clickAddSet()} />
       </View>
     )
   }

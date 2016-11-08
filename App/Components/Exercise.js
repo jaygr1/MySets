@@ -8,7 +8,7 @@ import {
 var styles = StyleSheet.create({
   searchInput: {
     flex: 1,
-    maxHeight: 30,
+    minHeight: 30,
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
@@ -20,16 +20,13 @@ var styles = StyleSheet.create({
 });
 
 export default class Exercise extends Component {
-  state = {
-    exercise: ''
-  }
-
   render() {
+    console.log("we're in the exercise component")
     return (
       <TextInput
         style={styles.searchInput}
         placeholder="'bench press'"
-        onChangeText={(exercise) => this.setState({exercise})}
+        onChangeText={(exercise) => this.setState({name: exercise})}
       />
     )
   }

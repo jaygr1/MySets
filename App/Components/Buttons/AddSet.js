@@ -44,16 +44,22 @@ export default class AddSet extends Component {
   //   );
   // }
 
-  clickAddSet() {
-    console.log("You tapped the Add Set Button!");
-  }
+  // clickAddSet() {
+    // console.log("You tapped the Add Set Button!");
+    // var setArray = [{}]
+    // debugger;
+    // this.props.append(<Set />);
+    // return (
+    //   <Set />
+    // )
+  // }
 
   render() {
     return (
       <TouchableHighlight
-        onPress={this.clickAddSet}
         style={styles.highlight}
         underlayColor="white"
+        onPress={() => this.props.onPress()}
       >
         <Text style={styles.buttonText}> Add Set </Text>
       </TouchableHighlight>

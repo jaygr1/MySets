@@ -4,9 +4,8 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableHighlight} from 'react-native';
-
-import Set from '../Set'
+  TouchableHighlight,
+  ScrollView} from 'react-native';
 
 var styles = StyleSheet.create({
   container: {
@@ -16,24 +15,21 @@ var styles = StyleSheet.create({
     alignSelf: 'flex-end',
     borderWidth: 1,
     borderColor: '#444',
-    marginTop: 5
+    marginTop: 5,
   },
   buttonText: {
     fontSize: 12
-  },
+  }
 });
 
 
 
 export default class AddExercise extends Component {
-  clickAddExercise() {
-    console.log("You tapped the Add Exercise Button!");
-  }
-
   render() {
+    console.log("we're in the add exercise component")
     return (
       <TouchableHighlight
-        onPress={this.clickAddExercise}
+        onPress={() => this.props.handleAddExercise}
         underlayColor="white"
         style={styles.highlight}
       >

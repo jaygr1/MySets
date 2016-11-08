@@ -19,7 +19,7 @@ var styles = StyleSheet.create({
   container: {
     marginTop: 30,
     flex: 1,
-    backgroundColor: '#111111'
+    backgroundColor: '#339FFF'
   },
 });
 
@@ -29,7 +29,7 @@ export default class MySets extends Component {
       <Navigator
         style={styles.container}
         initialRoute={{
-          title: 'Github Notetaker',
+          title: 'MySets',
           component: Main,
         }}
         renderScene={(route, navigator) =>
