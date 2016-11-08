@@ -14,7 +14,8 @@ import AddExercise from './Buttons/AddExercise'
 
 var styles = StyleSheet.create({
   mainContainer: {
-    padding: 30
+    margin: 10,
+    flexDirection: 'column'
   }
 });
 
@@ -30,7 +31,7 @@ export default class Main extends Component {
   }
 
   handleAddExercise() {
-    console.log("You tapped the Add Exercise Button!");
+    console.log("You tapped the Add Exercise Button main.js!");
     var newExercise = [{
       name: "",
       sets: [{
@@ -40,51 +41,44 @@ export default class Main extends Component {
     }]
     // this.setState({
     //   // exerciseCount: this.state.exerciseCount++
-    exercises: [...this.state.exercises, ...newExercise]
+    // exercises: [...this.state.exercises, ...newExercise]
     // });
+  }
+
+  handleAddSet() {
+    console.log("You tapped the Add set Button (exercise container)!");
+    var newSet = [{
+      weight: '',
+      reps: '',
+    }]
+    debugger;
+    this.state.exercises[0].sets.concat(newSet)
   }
 
   exercises() {
     // this.state.exercises.map(exercise => {
       return (
         <ExerciseContainer
+          onPress={() => this.handleAddSet()}
           //exercise={exercise.name}
           //sets={exercise.sets}
-          //onAddSet={}
+          // onAddSet={() => this.handleAddSet()}
         />
       // )
     // })
   // };
   )}
 
+  // <AddExercise
+  //   onPress={() => this.handleAddExercise }
+  // />
 
-    //   return (
-    //     <View style={styles.mainContainer}>
-    //       <ScrollView>
-    //         <ExerciseContainer />
-    //       </ScrollView>
-    //         <AddExercise onPress={() => this.handleAddExercise()} />
-    //     </View>
-    //   )
-    // }
     render() {
-      debugger;
       return (
-        <View>
+        <View style={styles.mainContainer}>
           {this.exercises()}
-          <AddExercise
-            onPress={() => this.handleAddExercise }
-          />
+
         </View>
       )
     }
-
-  // render() {
-  //   return (
-  //     <View style={styles.mainContainer}>
-  //       <ExerciseContainer />
-  //       <AddExercise />
-  //     </View>
-  //   )
-  // }
 };

@@ -17,20 +17,19 @@ var styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 8,
     backgroundColor: '#DAF7A6',
+    margin: 10
   }
 });
 
 export default class ExerciseContainer extends Component {
-  clickAddSet() {
-    console.log("You tapped the Add Set Button!");
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <Exercise />
         <Set />
-        <AddSet onPress={() => this.clickAddSet()} />
+        <AddSet
+          onPress={this.props.onPress}
+        />
       </View>
     )
   }

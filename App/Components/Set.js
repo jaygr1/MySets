@@ -7,29 +7,27 @@ import {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
-    maxWidth: 250,
-    maxHeight: 36,
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
     marginTop: 3,
+    marginRight: 3,
     padding: 2,
     justifyContent: 'flex-end',
     alignSelf: 'flex-end'
   },
   searchInput: {
-    flex: 1,
+    // flex: 1,
     height: 30,
-    width: 100,
+    flex: 1,
     padding: 4,
     marginRight: 5,
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
     maxHeight: 30,
-    maxWidth: 120,
+    maxWidth: 140,
   },
 });
 
