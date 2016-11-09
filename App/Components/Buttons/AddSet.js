@@ -24,7 +24,6 @@ var styles = StyleSheet.create({
 
 export default class AddSet extends Component {
   render() {
-    debugger;
     return (
       <View>
         <TouchableHighlight

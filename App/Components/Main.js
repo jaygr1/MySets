@@ -15,70 +15,82 @@ import AddExercise from './Buttons/AddExercise'
 var styles = StyleSheet.create({
   mainContainer: {
     margin: 10,
-    flexDirection: 'column'
+    flexDirection: 'column',
   }
 });
 
 export default class Main extends Component {
   state = {
-    exercises: [{
-      name: "",
-      sets: [{
-        weight: '',
-        reps: '',
-      }]
-    }]
-  }
+    exercises: [
+      {
+        name: "",
+        sets: [{
+          weight: '',
+          reps: '',
+        }]
+      }
+    ]
+  };
 
   handleAddExercise() {
     console.log("You tapped the Add Exercise Button main.js!");
-    var newExercise = [{
+    var newExercise = {
       name: "",
-      sets: [{
+      sets: {
         weight: '',
         reps: '',
-      }]
-    }]
-    // this.setState({
-    //   // exerciseCount: this.state.exerciseCount++
-    // exercises: [...this.state.exercises, ...newExercise]
-    // });
-  }
+      }
+    }
+    var newState = this.state.exercises.push(newExercise)
+    this.setState({
+      newState
+    })
+  };
 
   handleAddSet() {
-    console.log("You tapped the Add set Button (exercise container)!");
-    var newSet = [{
+    console.log("You tapped the Add set Button main.js!");
+    var newSet = {
       weight: '',
       reps: '',
-    }]
-    debugger;
-    this.setState(
-      this.state.exercises[0].sets.concat(newSet)
-    )
+    }
+    var newState = this.state.exercises[0].sets.push(newSet)
+    this.setState({
+      newState
+    })
+  };
+
+  sets() {
+    return this.state.exercises.map((exercise, i) => {
+      return (
+        <View key={i}>
+          <ExerciseContainer
+            onPress={() => this.handleAddSet()}
+              name={exercise.name}
+              sets={exercise.sets}
+          />
+        </View>
+      )
+    })
   }
 
   exercises() {
-    // this.state.exercises.map(exercise => {
+    return this.state.exercises.map((exercise, i) => {
       return (
-        <ExerciseContainer
-          onPress={() => this.handleAddSet()}
-          //exercise={exercise.name}
-          //sets={exercise.sets}
-          // onAddSet={() => this.handleAddSet()}
-        />
-      // )
-    // })
-  // };
-  )}
-
-  // <AddExercise
-  //   onPress={() => this.handleAddExercise }
-  // />
+        <View key={i}>
+          <ExerciseContainer
+            onPress={() => this.handleAddSet()}
+              name={exercise.name}
+              sets={exercise.sets}
+          />
+        </View>
+      )
+    })
+  }
 
     render() {
       return (
         <View style={styles.mainContainer}>
-          {this.exercises()}
+          {this.sets()}
 
         </View>
       )

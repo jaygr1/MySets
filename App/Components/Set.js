@@ -32,7 +32,6 @@ var styles = StyleSheet.create({
 });
 
 export default class Set extends Component {
-
   render() {
     return (
       <View style={styles.container}>
@@ -40,13 +39,13 @@ export default class Set extends Component {
           style={styles.searchInput}
           placeholder="'weight'"
           onChangeText={(weight) => this.setState({weight})}
-
+          value={this.props.value.weight}
         />
         <TextInput
           style={styles.searchInput}
           placeholder="'reps'"
           onChangeText={(reps) => this.setState({reps})}
-
+          value={this.props.value.reps}
         />
       </View>
     )
