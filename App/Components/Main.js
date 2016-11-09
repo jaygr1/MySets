@@ -52,7 +52,9 @@ export default class Main extends Component {
       reps: '',
     }]
     debugger;
-    this.state.exercises[0].sets.concat(newSet)
+    this.setState(
+      this.state.exercises[0].sets.concat(newSet)
+    )
   }
 
   exercises() {
