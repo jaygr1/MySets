@@ -18,21 +18,31 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#DAF7A6',
     padding: 10,
-    flexGrow: 1
+    flexGrow: 1,
+    marginBottom: 25
   }
 });
 
 export default class ExerciseContainer extends Component {
   displaySets() {
-    return this.props.sets.map((set, i) => {
+    debugger;
+    if (this.props.sets) {
+      return this.props.sets.map((set, i) => {
+        return (
+          <View key={i}>
+            <Set
+              value={this.props}
+            />
+          </View>
+        )
+      })
+    } else {
       return (
-        <View key={i}>
-          <Set
-            value={this.props}
-          />
-        </View>
+        <Set
+          value={''}
+        />
       )
-    })
+    }
   }
 
   render() {

@@ -36,10 +36,10 @@ export default class Main extends Component {
     console.log("You tapped the Add Exercise Button main.js!");
     var newExercise = {
       name: "",
-      sets: {
+      sets: [{
         weight: '',
         reps: '',
-      }
+      }]
     }
     var newState = this.state.exercises.push(newExercise)
     this.setState({
@@ -67,6 +67,7 @@ export default class Main extends Component {
             onPress={() => this.handleAddSet()}
               name={exercise.name}
               sets={exercise.sets}
+              ref={exercise.name}
           />
         </View>
       )
@@ -74,24 +75,22 @@ export default class Main extends Component {
   }
 
   exercises() {
-    return this.state.exercises.map((exercise, i) => {
       return (
-        <View key={i}>
+        <View>
           <ExerciseContainer
-            onPress={() => this.handleAddSet()}
-              name={exercise.name}
-              sets={exercise.sets}
+            onPress={() => this.handleAddExercise()}
           />
         </View>
       )
-    })
   }
 
     render() {
       return (
         <View style={styles.mainContainer}>
-          {this.sets()}
-
+          <View>
+            {this.sets()}
+          </View>
+            {this.exercises()}
         </View>
       )
     }
