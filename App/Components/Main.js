@@ -59,12 +59,25 @@ export default class Main extends Component {
       reps: '',
     }
     var newState = this.state.exercises[i].sets.push(newSet)
+
+    //REFACTOR TO USE SOMETHING LIKE BELOW RATHER THAN this.state.exercises[i].sets.push(newSet)
+    // var set = [
+    //   ...this.state.exercises[i].sets,
+    //   newSet
+    // ]
+    //
+    // var exercises = [
+    //   ...this.state.exercises,
+    //   set[0]
+    // ]
+
+    //surprising this works because newState returns 2 but I'll take it for now
     this.setState({
       newState
     })
   };
 
-  sets() {
+  exercises() {
     return this.state.exercises.map((exercise, i) => {
       return (
         <View key={i}>
@@ -78,8 +91,7 @@ export default class Main extends Component {
     })
   }
 
-  exercises() {
-
+  exercisesButton() {
       return (
         <View>
           <AddExercise
@@ -87,11 +99,6 @@ export default class Main extends Component {
           />
         </View>
       )
-    // return (
-    //   <ExerciseContainer
-    //     onPress={() => this.handleAddExercise()}
-    //   />
-    // )
   }
 
     render() {
@@ -99,9 +106,9 @@ export default class Main extends Component {
         <View style={styles.mainContainer}>
           <ScrollView>
             <View>
-              {this.sets()}
-            </View>
               {this.exercises()}
+            </View>
+              {this.exercisesButton()}
           </ScrollView>
         </View>
       )
