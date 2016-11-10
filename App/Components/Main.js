@@ -41,19 +41,24 @@ export default class Main extends Component {
         reps: '',
       }]
     }
-    var newState = this.state.exercises.push(newExercise)
+
+    var exercises = [
+      ...this.state.exercises,
+      newExercise
+    ];
+
     this.setState({
-      newState
+      exercises
     })
   };
 
-  handleAddSet() {
+  handleAddSet(i) {
     console.log("You tapped the Add set Button main.js!");
     var newSet = {
       weight: '',
       reps: '',
     }
-    var newState = this.state.exercises[0].sets.push(newSet)
+    var newState = this.state.exercises[i].sets.push(newSet)
     this.setState({
       newState
     })
@@ -64,10 +69,9 @@ export default class Main extends Component {
       return (
         <View key={i}>
           <ExerciseContainer
-            onPress={() => this.handleAddSet()}
+            onPress={() => this.handleAddSet(i)}
               name={exercise.name}
               sets={exercise.sets}
-              ref={exercise.name}
           />
         </View>
       )
@@ -75,22 +79,30 @@ export default class Main extends Component {
   }
 
   exercises() {
+
       return (
         <View>
-          <ExerciseContainer
+          <AddExercise
             onPress={() => this.handleAddExercise()}
           />
         </View>
       )
+    // return (
+    //   <ExerciseContainer
+    //     onPress={() => this.handleAddExercise()}
+    //   />
+    // )
   }
 
     render() {
       return (
         <View style={styles.mainContainer}>
-          <View>
-            {this.sets()}
-          </View>
-            {this.exercises()}
+          <ScrollView>
+            <View>
+              {this.sets()}
+            </View>
+              {this.exercises()}
+          </ScrollView>
         </View>
       )
     }

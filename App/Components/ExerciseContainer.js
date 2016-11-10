@@ -25,8 +25,7 @@ var styles = StyleSheet.create({
 
 export default class ExerciseContainer extends Component {
   displaySets() {
-    debugger;
-    if (this.props.sets) {
+    try {
       return this.props.sets.map((set, i) => {
         return (
           <View key={i}>
@@ -36,12 +35,8 @@ export default class ExerciseContainer extends Component {
           </View>
         )
       })
-    } else {
-      return (
-        <Set
-          value={''}
-        />
-      )
+    } catch(e) {
+      console.log(e)
     }
   }
 

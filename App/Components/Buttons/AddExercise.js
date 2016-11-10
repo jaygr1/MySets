@@ -32,7 +32,7 @@ export default class AddExercise extends Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() => this.props.onPress}
+          onPress={() => this.props.onPress()}
           underlayColor="white"
           style={styles.highlight}
         >
