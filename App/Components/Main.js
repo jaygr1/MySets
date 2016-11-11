@@ -7,10 +7,12 @@ import {
   TouchableHighlight,
   ActivityIndicator,
   Navigator,
-  ScrollView } from 'react-native';
+  ScrollView,
+  AsyncStorage } from 'react-native';
 
 import ExerciseContainer from './ExerciseContainer'
 import AddExercise from './Buttons/AddExercise'
+import Save from './Footer/Save'
 
 var styles = StyleSheet.create({
   mainContainer: {
@@ -101,6 +103,17 @@ export default class Main extends Component {
       )
   }
 
+  async handleSave() {
+    debugger;
+    try {
+      await AsyncStorage.setItem('exercises', JSON.stringify(this.state));
+      const value = await AsyncStorage.getItem("exercises");
+      console.log(value)
+    } catch (error) {
+
+    }
+  }
+
     render() {
       return (
         <View style={styles.mainContainer}>
@@ -110,6 +123,9 @@ export default class Main extends Component {
             </View>
               {this.exercisesButton()}
           </ScrollView>
+          <Save
+            onPress={() => this.handleSave()}
+          />
         </View>
       )
     }
