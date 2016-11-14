@@ -6,14 +6,18 @@ import {
   TextInput,
   AsyncStorage } from 'react-native';
 
-export default class Save extends Component {
+import Save from './Save'
+
+var styles = StyleSheet.create({
+  footer: {
+    borderColor: '#444'
+  }
+})
+export default class FooterContainer extends Component {
   render() {
     return (
-      <View>
-        <TouchableHighlight
-          underlayColor="white"
-          onPress={this.props.onPress}
-        />
+      <View var style={styles.footer}>
+        <Save />
       </View>
     )
   }

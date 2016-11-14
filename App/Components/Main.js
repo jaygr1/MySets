@@ -13,6 +13,9 @@ import {
 import ExerciseContainer from './ExerciseContainer'
 import AddExercise from './Buttons/AddExercise'
 import Save from './Footer/Save'
+import FooterContainer from './Footer/FooterContainer'
+
+var moment = require('moment');
 
 var styles = StyleSheet.create({
   mainContainer: {
@@ -25,6 +28,7 @@ export default class Main extends Component {
   state = {
     exercises: [
       {
+        date: `${moment().format("YYYY/MM/DD")}`,
         name: "",
         sets: [{
           weight: '',
@@ -80,6 +84,7 @@ export default class Main extends Component {
   };
 
   async componentDidMount() {
+    var today = moment().format('YYYY/MM/DD');
     var savedData = await AsyncStorage.getItem("exercises")
     var savedExercises = JSON.parse(savedData).exercises
     if (savedExercises.length != 0) {
@@ -90,6 +95,7 @@ export default class Main extends Component {
       this.setState({
         exercises: [
           {
+            date: `${today}`,
             name: "",
             sets: [{
               weight: '',
@@ -144,9 +150,10 @@ export default class Main extends Component {
             </View>
               {this.exercisesButton()}
           </ScrollView>
-          <Save
+          <FooterContainer
             onPress={() => this.handleSave()}
           />
+
         </View>
       )
     }
