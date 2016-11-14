@@ -79,6 +79,28 @@ export default class Main extends Component {
     })
   };
 
+  async componentDidMount() {
+    var savedData = await AsyncStorage.getItem("exercises")
+    var savedExercises = JSON.parse(savedData).exercises
+    if (savedExercises.length != 0) {
+      this.setState({
+        exercises: savedExercises
+      })
+    } else {
+      this.setState({
+        exercises: [
+          {
+            name: "",
+            sets: [{
+              weight: '',
+              reps: '',
+            }]
+          }
+        ]
+      })
+    }
+  }
+
   exercises() {
     return this.state.exercises.map((exercise, i) => {
       return (
@@ -104,7 +126,6 @@ export default class Main extends Component {
   }
 
   async handleSave() {
-    debugger;
     try {
       await AsyncStorage.setItem('exercises', JSON.stringify(this.state));
       const value = await AsyncStorage.getItem("exercises");
