@@ -7,14 +7,15 @@ import {
 
 var styles = StyleSheet.create({
   highlight: {
-    alignSelf: 'flex-end',
-    borderWidth: 1,
-    borderColor: '#444',
+    // alignSelf: 'flex-end',
+    // borderWidth: 1,
+    // borderColor: '#444',
     marginRight: 4,
     marginTop: 4
   },
-  buttonText: {
+  saveText: {
     fontSize: 12,
+    alignSelf: 'center',
   }
 });
 
@@ -27,7 +28,7 @@ export default class Save extends Component {
           underlayColor="white"
           onPress={this.props.onPress}
         >
-          <Text style={styles.buttonText}> Save </Text>
+          <Text style={styles.saveText}> Save </Text>
         </TouchableHighlight>
       </View>
     )

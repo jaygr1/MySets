@@ -20,7 +20,7 @@ var styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 12,
-
+    // backgroundColor: '#b2a5ac'
   }
 });
 

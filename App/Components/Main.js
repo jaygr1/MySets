@@ -21,6 +21,7 @@ var styles = StyleSheet.create({
   mainContainer: {
     margin: 10,
     flexDirection: 'column',
+    flex: 1
   }
 });
 
@@ -132,6 +133,7 @@ export default class Main extends Component {
   }
 
   async handleSave() {
+    console.log('you pressed save')
     try {
       await AsyncStorage.setItem('exercises', JSON.stringify(this.state));
       const value = await AsyncStorage.getItem("exercises");
@@ -153,7 +155,6 @@ export default class Main extends Component {
           <FooterContainer
             onPress={() => this.handleSave()}
           />
-
         </View>
       )
     }
