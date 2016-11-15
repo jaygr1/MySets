@@ -11,11 +11,10 @@ var styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#444',
     marginRight: 4,
-    marginTop: 4
+    marginTop: 4,
   },
   saveText: {
     fontSize: 12,
-    alignSelf: 'center',
   }
 });
 
