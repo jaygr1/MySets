@@ -7,7 +7,9 @@ import {
 
 var styles = StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderWidth: 5,
+    borderColor: 'green'
   },
   highlight: {
     alignItems: 'flex-start',
@@ -24,7 +26,10 @@ export default class CalendarButton extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.highlight}>
+        <TouchableHighlight
+          style={styles.highlight}
+          onPress={this.props.clickCal}
+        >
           <Image
             style={styles.image}
             source={require('../../Images/calendar.jpg')}

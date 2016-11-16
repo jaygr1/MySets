@@ -35,8 +35,14 @@ export default class FooterContainer extends Component {
   render() {
     return (
       <View var style={styles.footer}>
-        <CalendarButton style={styles.calendar}/>
-        <Save style={styles.save} onPress={this.props.onPress}/>
+        <CalendarButton
+          style={styles.calendar}
+          clickCal={this.props.clickCal}
+        />
+        <Save
+          style={styles.save}
+          onSave={this.props.onSave}
+        />
         <Text> placeholder </Text>
       </View>
     )

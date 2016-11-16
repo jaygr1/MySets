@@ -25,11 +25,14 @@ var styles = StyleSheet.create({
   }
 });
 
+// this.state.exercises.filter(e => e.date === "2016-01-01");
+// could use find instead if only wanted 1st item instead of array
+
 export default class Main extends Component {
   state = {
     exercises: [
       {
-        date: `${moment().format("YYYY/MM/DD")}`,
+        date: `${moment().format("YYYY-MM-DD")}`,
         name: "",
         sets: [{
           weight: '',
@@ -143,6 +146,12 @@ export default class Main extends Component {
     }
   }
 
+  handleCalendar() {
+    return (
+      console.log('it is working and working')
+    )
+  }
+
     render() {
       return (
         <View style={styles.mainContainer}>
@@ -153,7 +162,8 @@ export default class Main extends Component {
               {this.exercisesButton()}
           </ScrollView>
           <FooterContainer
-            onPress={() => this.handleSave()}
+            clickCal={() => this.handleCalendar()}
+            onSave={() => this.handleSave()}
           />
         </View>
       )

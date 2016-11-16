@@ -8,9 +8,11 @@ import {
   TouchableHighlight,
   DatePickerIOS } from 'react-native';
 
+import CalendarButton from '../Buttons/CalendarButton';
+
 var styles = StyleSheet.create({
   container: {
-
+    marginTop: 22
   }
 })
 
@@ -20,27 +22,38 @@ export default class Calendar extends Component {
  };
 
  state = {
-   date: this.props.date
- };
+    modalVisible: false,
+    date: this.props.date
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
 
  onDateChange = (date) => {
     this.setState({date: date});
   };
 
   render() {
+    console.log('calendar icon calendar.js')
     return (
       <View stle={styles.container}>
-        <TouchableHighlight>
-          <DatePickerIOS
-              date={this.state.date}
-              mode="date"
-              onDateChange={this.onDateChange}
-            />
-        </TouchableHighlight>
-        <Image
-          style={{width: 50, height: 50}}
-          source={require('../../Images/calendar.jpg')}
-        />
+        <Modal
+           animationType={"slide"}
+           transparent={false}
+           visible={this.state.modalVisible}
+           onRequestClose={() => {alert("Modal has been closed.")}}
+         >
+          <TouchableHighlight
+            onPress={() => {this.setModalVisible(true)}}
+          >
+            <DatePickerIOS
+                date={this.state.date}
+                mode="date"
+                onDateChange={this.onDateChange}
+              />
+          </TouchableHighlight>
+        </Modal>
       </View>
     )
   }
