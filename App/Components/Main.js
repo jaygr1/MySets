@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   NavigatorIOS,
   ScrollView,
+  Modal,
   AsyncStorage } from 'react-native';
 
 import ExerciseContainer from './ExerciseContainer'
@@ -148,10 +149,15 @@ export default class Main extends Component {
   }
 
   handleCalendar() {
-    this.props.navigator.push({
-      component: Calendar,
-      title: 'Date Picker'
-    });
+    // this.props.navigator.push({
+    //   component: Calendar,
+    //   title: 'Date Picker'
+    // });
+    return (
+      <Modal>
+        <Calendar />
+      </Modal>
+    )
   }
 
     render() {

@@ -42,7 +42,6 @@ export default class Calendar extends Component {
   };
 
   render() {
-    debugger;
     return (
       <View>
         <View style={styles.spacer}>

@@ -43,7 +43,7 @@ export default class FooterContainer extends Component {
           style={styles.save}
           onSave={this.props.onSave}
         />
-        <Text> placeholder </Text>
+      <Text style={{fontSize: 12}}> Text </Text>
       </View>
     )
   }
