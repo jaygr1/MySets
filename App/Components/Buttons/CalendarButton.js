@@ -8,8 +8,6 @@ import {
 var styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderWidth: 5,
-    borderColor: 'green'
   },
   highlight: {
     alignItems: 'flex-start',

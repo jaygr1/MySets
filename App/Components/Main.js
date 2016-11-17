@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableHighlight,
   ActivityIndicator,
-  Navigator,
+  NavigatorIOS,
   ScrollView,
   AsyncStorage } from 'react-native';
 
@@ -14,6 +14,7 @@ import ExerciseContainer from './ExerciseContainer'
 import AddExercise from './Buttons/AddExercise'
 import Save from './Footer/Save'
 import FooterContainer from './Footer/FooterContainer'
+import Calendar from './Footer/Calendar'
 
 var moment = require('moment');
 
@@ -147,9 +148,10 @@ export default class Main extends Component {
   }
 
   handleCalendar() {
-    return (
-      console.log('it is working and working')
-    )
+    this.props.navigator.push({
+      component: Calendar,
+      title: 'Date Picker'
+    });
   }
 
     render() {

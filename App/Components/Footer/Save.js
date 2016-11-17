@@ -7,8 +7,7 @@ import {
 
 var styles = StyleSheet.create({
   container: {
-    borderWidth: 5,
-    borderColor: 'green'
+
   },
   highlight: {
     // alignSelf: 'flex-end',

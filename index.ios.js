@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  NavigatorIOS
 } from 'react-native';
 
 import Main from './App/Components/Main';
@@ -26,15 +26,12 @@ var styles = StyleSheet.create({
 export default class MySets extends Component {
   render() {
     return (
-      <Navigator
+      <NavigatorIOS
         style={styles.container}
         initialRoute={{
           title: 'MySets',
           component: Main,
         }}
-        renderScene={(route, navigator) =>
-          <Main title={route.title} navigator={navigator} />
-        }
       />
     );
   }
