@@ -114,6 +114,8 @@ export default class Main extends Component {
   }
 
   exercises() {
+    // var viewDate = Calendar.selectedDate()
+    //come back
     return this.state.exercises.map((exercise, i) => {
       return (
         <View key={i}>
@@ -149,16 +151,21 @@ export default class Main extends Component {
   }
 
   handleCalendar() {
-    // this.props.navigator.push({
-    //   component: Calendar,
-    //   title: 'Date Picker'
-    // });
-    return (
-      <Modal>
-        <Calendar />
-      </Modal>
-    )
+    this.props.navigator.push({
+      component: Calendar,
+      title: 'Date Picker',
+      passProps: {onDateChange: this.handleDateChange}
+    });
+    // return (
+    //   <Modal>
+    //     <Calendar />
+    //   </Modal>
+    // )
   }
+
+  handleDateChange = (date) => {
+     this.setState({date: date});
+   };
 
     render() {
       return (
