@@ -38,7 +38,10 @@ export default class Calendar extends Component {
   // }
 
  onDateChange = (date) => {
-    this.props.onDateChange(date)
+    this.props.onDateChange(date);
+    this.setState({
+      date
+    })
   };
 
   // selectedDate() {

@@ -34,19 +34,21 @@ export default class Main extends Component {
   state = {
     exercises: [
       {
-        date: `${moment().format("YYYY-MM-DD")}`,
+        date: new Date(),
         name: "",
         sets: [{
           weight: '',
           reps: '',
-        }]
+        }],
       }
-    ]
+    ],
+    selectedDate: new Date()
   };
 
   handleAddExercise() {
     console.log("You tapped the Add Exercise Button main.js!");
     var newExercise = {
+      date: `${this.state.selectedDate}`,
       name: "",
       sets: [{
         weight: '',
@@ -90,7 +92,7 @@ export default class Main extends Component {
   };
 
   async componentDidMount() {
-    var today = moment().format('YYYY/MM/DD');
+    var today = new Date();
     var savedData = await AsyncStorage.getItem("exercises")
     var savedExercises = JSON.parse(savedData).exercises
     if (savedExercises.length != 0) {
@@ -106,7 +108,8 @@ export default class Main extends Component {
             sets: [{
               weight: '',
               reps: '',
-            }]
+            }],
+        selectedDate: `${today}`,
           }
         ]
       })
@@ -117,15 +120,20 @@ export default class Main extends Component {
     // var viewDate = Calendar.selectedDate()
     //come back
     return this.state.exercises.map((exercise, i) => {
-      return (
-        <View key={i}>
-          <ExerciseContainer
-            onPress={() => this.handleAddSet(i)}
-              name={exercise.name}
-              sets={exercise.sets}
-          />
-        </View>
-      )
+      console.log(exercise.date + ' exercise date')
+      console.log(this.state.selectedDate + ' selectedDate')
+      console.log(exercise)
+      if (exercise.date == this.state.selectedDate) {
+        return (
+          <View key={i}>
+            <ExerciseContainer
+              onPress={() => this.handleAddSet(i)}
+                name={exercise.name}
+                sets={exercise.sets}
+            />
+          </View>
+        )
+      }
     })
   }
 
@@ -164,7 +172,7 @@ export default class Main extends Component {
   }
 
   handleDateChange = (date) => {
-     this.setState({date: date});
+     this.setState({selectedDate: date});
    };
 
     render() {
