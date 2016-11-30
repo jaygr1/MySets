@@ -84,6 +84,7 @@ export default class Main extends Component {
     //   ...this.state.exercises,
     //   set[0]
     // ]
+    // also need to refactor handleChangeName to use proper syntax
 
     //surprising this works because newState returns 2 but I'll take it for now
     this.setState({
@@ -116,19 +117,34 @@ export default class Main extends Component {
     }
   }
 
+  //need to refactor this i.e.
+  // var exercises = [
+  //   ...this.state.exercises,
+  //   newExercise
+  // ];
+  handleChangeName(exercise, i) {
+    // var newState = this.state.exercises[i].sets.push(newSet)
+    // var name = this.state.exercises[i]
+    // var currState = this.state
+    // var newState = currState.exercises[i].name.replace("", exercise)
+    // console.log(newState)
+    this.setState({
+      name: exercise
+    })
+    console.log(this.state)
+  }
+
   exercises() {
     // var viewDate = Calendar.selectedDate()
     //come back
     return this.state.exercises.map((exercise, i) => {
-      console.log(exercise.date + ' exercise date')
-      console.log(this.state.selectedDate + ' selectedDate')
-      console.log(exercise)
       if (exercise.date == this.state.selectedDate) {
         return (
           <View key={i}>
             <ExerciseContainer
               onPress={() => this.handleAddSet(i)}
                 name={exercise.name}
+                onChangeName={(exercise) => this.handleChangeName(exercise, i)}
                 sets={exercise.sets}
             />
           </View>
@@ -162,18 +178,13 @@ export default class Main extends Component {
     this.props.navigator.push({
       component: Calendar,
       title: 'Date Picker',
-      passProps: {onDateChange: this.handleDateChange}
+      passProps: {onDateChange: this.handleDateChange, selectedDate: this.state.selectedDate}
     });
-    // return (
-    //   <Modal>
-    //     <Calendar />
-    //   </Modal>
-    // )
   }
 
   handleDateChange = (date) => {
-     this.setState({selectedDate: date});
-   };
+    this.setState({selectedDate: date});
+  };
 
     render() {
       return (

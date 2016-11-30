@@ -26,7 +26,7 @@ export default class Exercise extends Component {
       <TextInput
         style={styles.searchInput}
         placeholder="'bench press'"
-        onChangeText={(exercise) => this.setState({name: exercise})}
+        onChangeText={this.props.onChangeName}
         name={this.props.name}
       />
     )

@@ -44,7 +44,8 @@ export default class ExerciseContainer extends Component {
     return (
       <View style={styles.container}>
         <Exercise
-          name={this.props}
+          name={this.props.name}
+          onChangeName={this.props.onChangeName}
         />
         <View>
           {this.displaySets()}
