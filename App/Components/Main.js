@@ -126,12 +126,23 @@ export default class Main extends Component {
     // var newState = this.state.exercises[i].sets.push(newSet)
     // var name = this.state.exercises[i]
     // var currState = this.state
-    // var newState = currState.exercises[i].name.replace("", exercise)
+    const newExercise = {
+      ...this.state.exercises[i],
+      name: exercise
+    }
+    var currState = this.state.exercises;
+
+    var newState = [
+      ...currState.slice(0, i),
+      newExercise,
+      ...currState.slice(i+1, currState.length - 1)
+    ];
+
     // console.log(newState)
     this.setState({
-      name: exercise
+      exercises: newState
     })
-    console.log(this.state)
+    console.log(exercise, i, newState)
   }
 
   exercises() {

@@ -38,6 +38,7 @@ export default class Calendar extends Component {
   // }
 
  onDateChange = (date) => {
+   debugger;
     this.props.onDateChange(date);
     this.setState({
       date
