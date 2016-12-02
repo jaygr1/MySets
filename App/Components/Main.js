@@ -149,13 +149,19 @@ export default class Main extends Component {
     // var viewDate = Calendar.selectedDate()
     //come back
     return this.state.exercises.map((exercise, i) => {
-      if (exercise.date == this.state.selectedDate) {
+      // console.log(exercise.date.setHours(0,0,0,0))
+      // var a = exercise.date
+      // a.setHours(0,0,0,0)
+      // var b = this.state.selectedDate
+      // b.setHours(0,0,0,0)
+      if (exercise.date.toString().slice(0,15) == this.state.selectedDate.toString().slice(0,15)) {
+      // if (date == selectedDate) {
         return (
           <View key={i}>
             <ExerciseContainer
+              onChangeName={(exercise) => this.handleChangeName(exercise, i)}
               onPress={() => this.handleAddSet(i)}
                 name={exercise.name}
-                onChangeName={(exercise) => this.handleChangeName(exercise, i)}
                 sets={exercise.sets}
             />
           </View>
@@ -165,13 +171,13 @@ export default class Main extends Component {
   }
 
   exercisesButton() {
-      return (
-        <View>
-          <AddExercise
-            onPress={() => this.handleAddExercise()}
-          />
-        </View>
-      )
+    return (
+      <View>
+        <AddExercise
+          onPress={() => this.handleAddExercise()}
+        />
+      </View>
+    )
   }
 
   async handleSave() {
