@@ -38,14 +38,16 @@ export default class Set extends Component {
         <TextInput
           style={styles.searchInput}
           placeholder="'weight'"
-          onChangeText={(weight) => this.setState({weight})}
-          value={this.props.value.weight}
+          onChangeText={this.props.onInputWeight}
+          weight={this.props.value.sets.weight}
+          value={this.props.value.sets.weight}
         />
         <TextInput
           style={styles.searchInput}
           placeholder="'reps'"
-          onChangeText={(reps) => this.setState({reps})}
-          value={this.props.value.reps}
+          onChangeText={this.props.onInputReps}
+          reps={this.props.value.sets.reps}
+          value={this.props.value.sets.reps}
         />
       </View>
     )

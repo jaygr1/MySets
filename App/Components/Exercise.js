@@ -28,6 +28,7 @@ export default class Exercise extends Component {
         placeholder="'bench press'"
         onChangeText={this.props.onChangeName}
         name={this.props.name}
+        value={this.props.name}
       />
     )
   }

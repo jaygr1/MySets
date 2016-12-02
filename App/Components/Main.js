@@ -145,23 +145,65 @@ export default class Main extends Component {
     console.log(exercise, i, newState)
   }
 
+  handleInputWeight(weight, i) {
+    console.log('handleInputWeight')
+    // debugger;
+    // console.log(weight, i)
+    // const newWeight = {
+    //   ...this.state.exercises[i].sets,
+    //   weight: weight
+    // }
+    // var currState = this.state.exercises;
+    //
+    // var newState = [
+    //   ...currState.slice(0, i),
+    //   newWeight,
+    //   ...currState.slice(i+1, currState.length - 1)
+    // ];
+    //
+    // // console.log(newState)
+    // this.setState({
+    //   exercises: newState
+    // })
+    // console.log(exercise, i, newState)
+  }
+
+  handleInputReps(reps, i) {
+    // debugger;
+    // console.log(reps)
+    // const newReps = {
+    //   ...this.state.exercises[i].sets,
+    //   reps: reps
+    // }
+    // var currState = this.state.exercises;
+    //
+    // var newState = [
+    //   ...currState.slice(0, i),
+    //   newReps,
+    //   ...currState.slice(i+1, currState.length - 1)
+    // ];
+    //
+    // // console.log(newState)
+    // this.setState({
+    //   exercises: newState
+    // })
+    // console.log(exercise, i, newState)
+  }
+
   exercises() {
     // var viewDate = Calendar.selectedDate()
     //come back
     return this.state.exercises.map((exercise, i) => {
-      // console.log(exercise.date.setHours(0,0,0,0))
-      // var a = exercise.date
-      // a.setHours(0,0,0,0)
-      // var b = this.state.selectedDate
-      // b.setHours(0,0,0,0)
       if (exercise.date.toString().slice(0,15) == this.state.selectedDate.toString().slice(0,15)) {
-      // if (date == selectedDate) {
         return (
           <View key={i}>
             <ExerciseContainer
               onChangeName={(exercise) => this.handleChangeName(exercise, i)}
+              onInputWeight={(weight) => this.handleInputWeight(weight)}
+              onInputReps={(reps) => this.handleInputReps(reps)}
               onPress={() => this.handleAddSet(i)}
                 name={exercise.name}
+                value={exercise.name}
                 sets={exercise.sets}
             />
           </View>
