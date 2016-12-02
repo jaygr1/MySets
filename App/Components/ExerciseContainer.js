@@ -46,6 +46,7 @@ export default class ExerciseContainer extends Component {
         <Exercise
           name={this.props.name}
           onChangeName={this.props.onChangeName}
+          value={this.props.name}
         />
         <View>
           {this.displaySets()}

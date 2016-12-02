@@ -203,7 +203,6 @@ export default class Main extends Component {
               onInputReps={(reps) => this.handleInputReps(reps)}
               onPress={() => this.handleAddSet(i)}
                 name={exercise.name}
-                value={exercise.name}
                 sets={exercise.sets}
             />
           </View>
