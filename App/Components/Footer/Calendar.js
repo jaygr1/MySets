@@ -30,7 +30,7 @@ export default class Calendar extends Component {
  };
 
  state = {
-    date: this.props.date
+    date: this.props.selectedDate
   }
 
   // setModalVisible(visible) {
