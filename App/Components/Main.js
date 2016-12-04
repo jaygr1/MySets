@@ -146,29 +146,45 @@ export default class Main extends Component {
   }
 
   handleInputWeight(weight, i) {
-    console.log('handleInputWeight')
-    // debugger;
+
+    // console.log('weight, i')
     // console.log(weight, i)
+    // console.log(...this.state.exercises[i], 'here it is')
+    // neeed to replace 0 below with an index to loop through multiple sets
+
+    this.state.exercises[i].sets[0].weight = weight
+    // var w = this.state.exercises[i].sets[0].weight
+    // console.log(w, 'this is w')
+    // debugger;
+    // var newWeight = this.state.exercises[i].sets[0].weight.replace(w, weight)
+    // var nw = {
+    //   ...this.state.exercises[i],
+    //   weight: weight
+    // }
+    // console.log(nw, 'nwnwnwnw')
     // const newWeight = {
-    //   ...this.state.exercises[i].sets,
+    //   ...this.state.exercises[i],
+    //   ...this.state.exercises[i].sets[0],
     //   weight: weight
     // }
     // var currState = this.state.exercises;
     //
     // var newState = [
     //   ...currState.slice(0, i),
-    //   newWeight,
+    //   nw,
     //   ...currState.slice(i+1, currState.length - 1)
     // ];
-    //
-    // // console.log(newState)
+
+    // console.log(newState)
     // this.setState({
     //   exercises: newState
     // })
-    // console.log(exercise, i, newState)
+    // console.log(weight, i, newState)
   }
 
   handleInputReps(reps, i) {
+    this.state.exercises[i].sets[0].reps = reps
+    // var w = this.state.exercises[i].sets[0].reps
     // debugger;
     // console.log(reps)
     // const newReps = {
@@ -187,20 +203,18 @@ export default class Main extends Component {
     // this.setState({
     //   exercises: newState
     // })
-    // console.log(exercise, i, newState)
+    // // console.log(reps, i, newState)
   }
 
   exercises() {
-    // var viewDate = Calendar.selectedDate()
-    //come back
     return this.state.exercises.map((exercise, i) => {
       if (exercise.date.toString().slice(0,15) == this.state.selectedDate.toString().slice(0,15)) {
         return (
           <View key={i}>
             <ExerciseContainer
               onChangeName={(exercise) => this.handleChangeName(exercise, i)}
-              onInputWeight={(weight) => this.handleInputWeight(weight)}
-              onInputReps={(reps) => this.handleInputReps(reps)}
+              onInputWeight={(weight) => this.handleInputWeight(weight, i)}
+              onInputReps={(reps) => this.handleInputReps(reps, i)}
               onPress={() => this.handleAddSet(i)}
                 name={exercise.name}
                 sets={exercise.sets}
@@ -241,7 +255,9 @@ export default class Main extends Component {
   }
 
   handleDateChange = (date) => {
-    this.setState({selectedDate: date});
+    this.setState({
+      selectedDate: date
+    })
   };
 
     render() {

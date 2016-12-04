@@ -33,21 +33,21 @@ var styles = StyleSheet.create({
 
 export default class Set extends Component {
   render() {
+    //will need to replace zero with an index
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.searchInput}
           placeholder="'weight'"
-          onChangeText={this.props.onInputWeight}
-          weight={this.props.value.sets.weight}
-          value={this.props.value.sets.weight}
+          onChangeText={this.props.value.onInputWeight}
+          value={this.props.value.sets[0].weight}
         />
         <TextInput
           style={styles.searchInput}
           placeholder="'reps'"
-          onChangeText={this.props.onInputReps}
+          onChangeText={this.props.value.onInputReps}
           reps={this.props.value.sets.reps}
-          value={this.props.value.sets.reps}
+          value={this.props.value.sets[0].reps}
         />
       </View>
     )
